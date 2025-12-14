@@ -5,6 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 // 如果是在 GitHub Pages 上部署，使用倉庫名稱作為 base 路徑
 // 例如：如果倉庫名為 'vue-pwa-todo'，則 base 為 '/vue-pwa-todo/'
 // 本地開發時 base 為 '/'
+// 注意：倉庫名稱是 'PWA--'，所以 base 為 '/PWA--/'
 const base = process.env.GITHUB_REPOSITORY 
   ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
   : '/'
@@ -23,14 +24,16 @@ export default defineConfig({
         theme_color: '#4f46e5',
         background_color: '#ffffff',
         display: 'standalone',
+        start_url: base,
+        scope: base,
         icons: [
           {
-            src: 'icons/icon-192x192.png',
+            src: `${base}icons/icon-192x192.png`,
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'icons/icon-512x512.png',
+            src: `${base}icons/icon-512x512.png`,
             sizes: '512x512',
             type: 'image/png'
           }
