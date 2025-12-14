@@ -2,7 +2,15 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// 如果是在 GitHub Pages 上部署，使用倉庫名稱作為 base 路徑
+// 例如：如果倉庫名為 'vue-pwa-todo'，則 base 為 '/vue-pwa-todo/'
+// 本地開發時 base 為 '/'
+const base = process.env.GITHUB_REPOSITORY 
+  ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+  : '/'
+
 export default defineConfig({
+  base: base,
   plugins: [
     vue(),
     VitePWA({

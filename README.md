@@ -100,6 +100,56 @@ PWA測試/
         └── style.css     # 全局樣式
 ```
 
+## 部署到 GitHub Pages
+
+### 方法 1: 使用 GitHub Actions（推薦）
+
+1. **啟用 GitHub Pages**：
+   - 前往您的 GitHub 倉庫
+   - 點擊 `Settings` → `Pages`
+   - 在 `Source` 選擇 `GitHub Actions`
+
+2. **推送代碼**：
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+3. **自動部署**：
+   - GitHub Actions 會自動構建和部署
+   - 在 `Actions` 標籤頁查看部署狀態
+   - 部署完成後，訪問：`https://您的用戶名.github.io/倉庫名稱/`
+
+### 方法 2: 手動部署
+
+1. **構建專案**：
+   ```bash
+   npm run build
+   ```
+
+2. **安裝 gh-pages**（如果還沒安裝）：
+   ```bash
+   npm install --save-dev gh-pages
+   ```
+
+3. **部署**：
+   ```bash
+   npm run deploy
+   ```
+
+   這會將 `dist` 目錄推送到 `gh-pages` 分支
+
+4. **啟用 GitHub Pages**：
+   - 前往 `Settings` → `Pages`
+   - 選擇 `gh-pages` 分支作為源
+
+### 注意事項
+
+- 如果您的倉庫名稱不是根目錄（例如：`username.github.io`），請確保 `vite.config.js` 中的 `base` 路徑正確
+- GitHub Actions 會自動處理 base 路徑
+- 首次部署可能需要幾分鐘時間
+
 ## 瀏覽器支援
 
 - Chrome/Edge (推薦)
